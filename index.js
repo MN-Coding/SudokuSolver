@@ -32,16 +32,19 @@ export function highlightSpot(row, col){
     document.getElementById(id).className = "illegal"
 }
 
-function updateSpot(row, col, num){
+export function updateSpot(row, col, num){
     let id = (row.toString()).concat(col.toString())
     document.getElementById(id).value = num.toString()
 }
 
 export function updateBoard(board){
-    let functions = []
     for(let i = 0; i < 9; i++){
         for(let j = 0; j < 9; j++){
-            functions = updateSpot(i, j, board[i][j])
+            updateSpot(i, j, board[i][j])
         }
     }
 }
+
+/*
+- Game Loop to Update Spot
+*/
