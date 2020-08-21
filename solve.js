@@ -1,4 +1,4 @@
-import { clearBoard, highlightSpot, updateBoard } from './index.js'
+import { clearBoard, highlightSpot, updateBoard, updateSpot } from './index.js'
 
 export function start(){
     let board = makeBackendBoard()
@@ -31,7 +31,6 @@ function sol(board){
     for(let i = 1; i < 10; i++){
         if (isValid(i, row, col, board)){
             board[row][col] = i
-            //updateSpot(row, col, i)
             if(sol(board)){
                 return true
             }
@@ -55,8 +54,7 @@ function makeBackendBoard(){
                 coords[i][j] = 0
             }
             
-            if (Number.isNaN(coords[i][j])){ //Check to see if input is number
-                //clearSpot(i, j)
+            if (Number.isNaN(coords[i][j])){
                 highlightSpot(i, j)
                 return false
             }
@@ -65,7 +63,6 @@ function makeBackendBoard(){
     return coords
 }
 
-//Function to check if board is initially valid
 function isValidBoard(board){
     
     //Row Check
@@ -120,7 +117,6 @@ function isValidBoard(board){
     return true
 }
 
-//Function to check if number is valid at spot
 function isValid(number, row, col, board){
     //Row + Column Check
     for(let i = 0; i < 9; i ++){
